@@ -1,0 +1,14 @@
+---
+# tasks file for yandex-monitoring-role
+- name: Install Yandex Unified Agent
+  run_once: true
+  shell: ua_version=$(curl -s https://storage.yandexcloud.net/yc-unified-agent/latest-version) bash -c 'curl -s -O https://storage.yandexcloud.net/yc-unified-agent/releases/$ua_version/unified_agent && chmod +x ./unified_agent'
+
+- name: copy config file
+  run_once: true
+  template:
+    src: templates/config.j2
+    dest: ~/.unified_agent/config.yml
+
+- name: Run Yandex Unified Agent
+  shell: ./unified_agent --config ~/.unified_agent/config.yml
