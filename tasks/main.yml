@@ -12,3 +12,14 @@
 
 - name: Run Yandex Unified Agent
   shell: ./unified_agent --config ~/.unified_agent/config.yml
+
+- name: Create environment file
+  template: templates/unified_agent.service.j2
+  dest: /etc/systemd/system/unified_agent.service
+  mode: 644
+  notify:
+    - reload systemctl
+
+- name: Start agent
+  service: name=unified_agent.service state=started enabled=yes
+

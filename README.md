@@ -10,7 +10,7 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - { role: fgh151.yandex-monitoring, folder_id: 4some$folder@id2 }
+         - { role: fgh151.yandex-monitoring, folder_id: 4some$folder@id2, user: debian }
 ```
 
 License

@@ -1,0 +1,9 @@
+[Unit]
+Description=Unified agent
+
+[Service]
+ExecStart=/home/{{ user }}/unified_agent --config /home/{{ user }}/config.yml
+
+[Install]
+WantedBy=multi-user.target
+
